@@ -1,0 +1,325 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #050b1a, #081c3d, #0b2f5c);
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(0, 255, 255, 0.12), transparent 40%),
+        radial-gradient(circle at 85% 15%, rgba(255, 0, 230, 0.12), transparent 40%),
+        radial-gradient(circle at 50% 90%, rgba(120, 0, 255, 0.12), transparent 45%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.container {
+    width: 95%;
+    max-width: 1200px;
+    background: rgba(10, 20, 40, 0.35);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(0, 255, 255, 0.35);
+    border-radius: 25px;
+    padding: 35px;
+    position: relative;
+    z-index: 1;
+    box-shadow:
+        0 0 25px rgba(0, 255, 255, 0.25),
+        0 0 60px rgba(255, 0, 230, 0.12),
+        inset 0 0 30px rgba(0, 255, 255, 0.06);
+}
+
+.container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 25px;
+    background: linear-gradient(125deg,
+        rgba(0, 255, 255, 0.06) 0%,
+        rgba(255, 0, 230, 0.04) 35%,
+        transparent 60%,
+        rgba(120, 0, 255, 0.05) 100%);
+    pointer-events: none;
+}
+
+h1 {
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 10px;
+    background: linear-gradient(90deg, #00fff7, #00d9ff, #ff00e6, #00fff7);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 25px rgba(0, 255, 255, 0.5);
+    animation: hueShift 6s linear infinite;
+}
+
+@keyframes hueShift {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+.subtitle {
+    text-align: center;
+    color: #aef6ff;
+    margin-bottom: 35px;
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 8px rgba(0, 217, 255, 0.4);
+}
+
+.summary {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 35px;
+    position: relative;
+    z-index: 1;
+}
+
+.card {
+    flex: 1;
+    min-width: 250px;
+    background: rgba(10, 25, 45, 0.4);
+    backdrop-filter: blur(15px) saturate(180%);
+    -webkit-backdrop-filter: blur(15px) saturate(180%);
+    border: 1px solid rgba(0, 255, 255, 0.4);
+    border-radius: 18px;
+    padding: 25px;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    transition: 0.4s;
+    box-shadow:
+        0 0 20px rgba(0, 217, 255, 0.25),
+        inset 0 0 20px rgba(0, 255, 255, 0.05);
+}
+
+.card::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(115deg,
+        transparent 40%,
+        rgba(255, 255, 255, 0.12) 48%,
+        rgba(0, 255, 255, 0.18) 50%,
+        rgba(255, 255, 255, 0.12) 52%,
+        transparent 60%);
+    transform: translateX(-100%);
+    transition: transform 0.8s ease;
+}
+
+.card:hover::after {
+    transform: translateX(100%);
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: rgba(255, 0, 230, 0.6);
+    box-shadow:
+        0 0 35px rgba(0, 255, 255, 0.4),
+        0 0 50px rgba(255, 0, 230, 0.25),
+        inset 0 0 25px rgba(0, 255, 255, 0.08);
+}
+
+.card h3 {
+    margin-bottom: 12px;
+    color: #7af2ff;
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
+    letter-spacing: 0.5px;
+}
+
+.card h2 {
+    font-size: 34px;
+    color: white;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+.transaction-form,
+.history {
+    background: rgba(10, 20, 40, 0.35);
+    backdrop-filter: blur(18px) saturate(180%);
+    -webkit-backdrop-filter: blur(18px) saturate(180%);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 25px;
+    margin-top: 35px;
+    position: relative;
+    z-index: 1;
+    box-shadow:
+        0 0 25px rgba(0, 183, 255, 0.18),
+        inset 0 0 25px rgba(0, 255, 255, 0.05);
+}
+
+.transaction-form h2,
+.history h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    background: linear-gradient(90deg, #00fff7, #00d9ff, #ff00e6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 15px rgba(0, 217, 255, 0.4);
+}
+
+.transaction-form input,
+.transaction-form select,
+#search,
+#filter {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(0, 255, 255, 0.25);
+    border-radius: 10px;
+    outline: none;
+    background: rgba(0, 30, 60, 0.35);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: white;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.transaction-form input:focus,
+.transaction-form select:focus,
+#search:focus,
+#filter:focus {
+    border-color: rgba(255, 0, 230, 0.6);
+    background: rgba(0, 30, 60, 0.5);
+    box-shadow:
+        0 0 0 3px rgba(0, 255, 255, 0.15),
+        0 0 20px rgba(255, 0, 230, 0.2);
+}
+
+.transaction-form input::placeholder,
+#search::placeholder {
+    color: #9fdfff;
+}
+
+.transaction-form select option,
+#filter option {
+    color: black;
+}
+
+.transaction-form button,
+#export-btn {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid rgba(0, 255, 255, 0.4);
+    border-radius: 10px;
+    background: linear-gradient(90deg, #00fff7, #00d9ff, #ff00e6, #00fff7);
+    background-size: 250% auto;
+    color: #03101f;
+    font-weight: 600;
+    font-size: 17px;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: background-position 0.6s ease, transform 0.3s, box-shadow 0.3s;
+    margin-top: 8px;
+}
+
+.transaction-form button:hover,
+#export-btn:hover {
+    background-position: 100% 50%;
+    transform: scale(1.02);
+    box-shadow:
+        0 0 25px rgba(0, 255, 255, 0.6),
+        0 0 40px rgba(255, 0, 230, 0.35);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 15px;
+    background: rgba(0, 20, 45, 0.3);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+table th {
+    background: rgba(0, 255, 255, 0.12);
+    color: #aef6ff;
+    padding: 16px;
+    text-shadow: 0 0 8px rgba(0, 217, 255, 0.5);
+    border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+table td {
+    padding: 15px;
+    color: white;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+table tr:hover {
+    background: rgba(0, 255, 255, 0.07);
+    box-shadow: inset 0 0 15px rgba(255, 0, 230, 0.1);
+}
+
+.history button {
+    background: linear-gradient(90deg, #ff2e6c, #ff00b3);
+    color: white;
+    border: 1px solid rgba(255, 0, 153, 0.5);
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-shadow: 0 0 8px rgba(255, 0, 153, 0.6);
+}
+
+.history button:hover {
+    box-shadow:
+        0 0 18px rgba(255, 23, 116, 0.7),
+        0 0 30px rgba(255, 0, 230, 0.4);
+    transform: scale(1.05);
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #00fff7, #ff00e6);
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+
+    .summary {
+        flex-direction: column;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    table {
+        font-size: 13px;
+    }
+
+}
